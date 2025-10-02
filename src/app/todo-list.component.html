@@ -1,6 +1,10 @@
-<h1>📝 to-do list:</h1>
 
-<div>
+
+<div class="wrapper">
+  <div class="header">
+    <h1>📝 to-do list:</h1>
+  </div>
+  
   <div class="search-task">
     <input
       tuiTextfield
@@ -33,8 +37,9 @@
       Добавить
     </button>
   </div>
+</div>
 
-  <div class="container">
+<div class="container">
     <ng-container *ngIf="tasks$ | async as tasks">
       <div *ngFor="let task of tasks$ | async" 
           class="task-card"
@@ -121,5 +126,3 @@
     </ng-container>
 
   </div>
-
-</div>

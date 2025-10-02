@@ -1,8 +1,21 @@
+
 [
   { "id": "3f29b1e2-7c6d-4f1d-9b8a-2e0f1c6d7a91", "title": "Сходить в магазин", "checked": false },
   { "id": "9a1c4d3f-2b5e-4c8d-8f7a-0b2d3e4f5a6b", "title": "Помыть полы", "checked": true },
   { "id": "f2b7c8d1-6e5a-4b3f-9c2d-1e0f7a8b9c3d", "title": "Написать рецензию на книгу", "checked": true },
-  { "id": "5d3a1b2c-8f7e-4c9d-9a2b-0e1f2c3d4b5a", "title": "Обновить подиску", "checked": false },
-  { "id": "5d3a1b2c-8f7e-4c9d-9a2b-0e1f2c3d4b5с", "title": "Исправить 'подиску' на 'подписку'!!", "checked": false },
-  { "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "title": "Оплатить коммуналку", "checked": false }
+  { "id": "5d3a1b2c-8f7e-4c9d-9a2b-0e1f2c3d4b5a", "title": "Обновить пописку", "checked": true },
+  { "id": "5d3a1b2c-8f7e-4c9d-9a2b-0e1f2c3d4b5c", "title": "Исправить 'подиску' на 'подписку' :D", "checked": false },
+  { "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "title": "Оплатить коммуналку", "checked": false },
+  { "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e", "title": "Заготовки!!", "checked": false },
+  { "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f", "title": "Вынести мусор", "checked": true },
+  { "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8g", "title": "Прививка кошке!", "checked": false },
+  { "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8g9h", "title": "Разослать сканы плёнки", "checked": true },
+  { "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8g9h0i", "title": "СМС папе", "checked": false },
+  { "id": "c9d0e1f2-a3b4-4c5d-6e7f-9g0h1i2j3k4l", "title": "Исчерпать фантазию", "checked": true },
+  { "id": "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9g0h1i2j", "title": "Еще дело", "checked": false },
+  { "id": "b8c9d0e1-f2a3-4b5c-6d7e-8f9g0h1i2j3k", "title": "Новое дело", "checked": true },
+  { "id": "d0e1f2a3-b4c5-4d6e-7f8g-0h1i2j3k4l5m", "title": "Дела дела дела дела", "checked": true },
+  { "id": "e1f2a3b4-c5d6-4e7f-8g9h-1i2j3k4l5m6n", "title": "Очень длинное дело. Очень длинное дело. Очень длинное дело. ", "checked": false },
+  { "id": "a3b4c5d6-e7f8-4g9h-0i1j-3k4l5m6n7o8p", "title": "Даёшь больше дел!", "checked": false },
+  { "id": "b4c5d6e7-f8g9-4h0i-1j2k-4l5m6n7o8p9q", "title": "Постоянное дело", "checked": true }
 ]
