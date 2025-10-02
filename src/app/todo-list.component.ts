@@ -26,7 +26,7 @@ import { Guid } from './shared/types/guid';
     TuiBlock,
     TuiIcon,
     TuiTitle,
-    TuiTooltip
+    TuiTooltip,
   ],
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
@@ -71,6 +71,14 @@ export class TodoListComponent implements OnInit {
 
   toggle(id: string) {
     this.svc.toggle(id);
+  }
+
+  add() {
+    const title = this.newTitle.trim();
+    if (!title) return;
+
+    this.svc.add(title);
+    this.newTitle = '';
   }
 
   startEditing(task: Task) {

@@ -44,9 +44,20 @@ export class TaskService {
     this.save(next);
   }
 
+  add(title: string) {
+    const newTodo: Task = {
+      id: createGuid(),
+      title,
+      checked: false,
+    };
+    const next = [newTodo, ...(this.todos$.value ?? [])];
+    this.todos$.next(next);
+    this.save(next);
+  }
+
   update(updated: Task) {
     if (!this.todos$.value) return;
-    
+
     const next = this.todos$.value.map(t => (t.id === updated.id ? {...updated} : t));
     this.todos$.next(next);
     this.save(next);

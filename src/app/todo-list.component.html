@@ -1,5 +1,26 @@
 <h1>to-do list:</h1>
 <div>
+  <div class="add-task" style="margin-bottom:1rem; display:flex; gap:0.5rem;">
+    <input
+      tuiTextfield
+      [(ngModel)]="newTitle"
+      placeholder="Новая задача"
+      size="m"
+      style="flex:1;"
+      (keydown.enter)="add()"
+    />
+
+    <button
+      tuiButton
+      appearance="primary"
+      size="m"
+      (click)="add()"
+      [disabled]="!newTitle.trim()"
+    >
+      Добавить
+    </button>
+  </div>
+
   <div class="container">
     <ng-container *ngIf="tasks$ | async as tasks">
       <div *ngFor="let task of tasks$ | async" 
@@ -18,7 +39,7 @@
 
             <!-- режим ПРОСМОТРА -->
             <ng-container *ngIf="editingId != task.id">
-              {{ task.title }}
+              <span (dblclick)="startEditing(task)" style="cursor:text;">{{ task.title }}</span>
 
               <button 
                   (click)="startEditing(task)"
