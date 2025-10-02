@@ -16,7 +16,7 @@
     <input
       tuiTextfield
       [(ngModel)]="newTitle"
-      placeholder="Новая задача"
+      placeholder="Что нужно сделать?"
       [maxlength]="maxTitleLength"
       size="m"
       style="flex:1;"
@@ -53,7 +53,11 @@
             <!-- режим ПРОСМОТРА -->
             <ng-container *ngIf="editingId != task.id">
               <div class="task-left-side">
-                <span (dblclick)="startEditing(task)" style="cursor:text;">{{ task.title }}</span>
+                <!-- [innerHTML]="highlightMatch(task.title, searchControl.value || '')" -->
+                <span (dblclick)="startEditing(task)" style="cursor:text;"
+                      >
+                  {{ task.title }}
+                </span>
               </div>
               <div class="task-right-side">
                 <button 
@@ -67,7 +71,7 @@
                     (click)="delete(task.id)"
                     title="Удалить задачу"
                     appearance="icon"
-                >❌</button>
+                >🗑️</button>
               </div>
             </ng-container>
 
@@ -105,7 +109,7 @@
                     (click)="delete(task.id)"
                     title="Удалить задачу"
                     appearance="icon"
-                >❌</button>
+                >🗑️</button>
               </div>
             </ng-container>
             

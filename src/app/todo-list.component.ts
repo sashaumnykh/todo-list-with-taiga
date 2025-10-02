@@ -115,9 +115,11 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  autoResize(event: Event): void {
-  const textarea = event.target as HTMLTextAreaElement;
-  textarea.style.height = 'auto';
-  textarea.style.height = textarea.scrollHeight + 'px';
-}
+  /*
+  highlightMatch(text: string, query: string): string {
+    if (!query) return text;
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+  }
+  */
 }
