@@ -9,6 +9,7 @@ import { TuiIcon, TuiRoot, TuiTitle } from '@taiga-ui/core';
 import { TuiDialog } from '@taiga-ui/core';
 import { TuiBlock, TuiCheckbox, TuiTooltip } from '@taiga-ui/kit';
 import { TuiButton } from '@taiga-ui/core';
+import { Guid } from './shared/types/guid';
 
 @Component({
   selector: 'app-todo-list',
@@ -35,7 +36,7 @@ export class TodoListComponent implements OnInit {
   tasks$!: Observable<Task[]>;
   newTitle = '';
 
-  editingId: string | null = null;
+  editingId: Guid | null = null;
   editingTitle = '';
 
   controls: { [id: string]: FormControl } = {};
@@ -70,6 +71,28 @@ export class TodoListComponent implements OnInit {
 
   toggle(id: string) {
     this.svc.toggle(id);
+  }
+
+  startEditing(task: Task) {
+    this.editingId = task.id;
+    this.editingTitle = task.title;
+  }
+
+  cancelEditing() {
+    this.editingId = null;
+    this.editingTitle = '';
+  }
+
+  saveChanges() {
+    if (this.editingId) {
+      this.svc.update({ 
+        id: this.editingId, 
+        title: this.editingTitle, 
+        checked: this.controls[this.editingId].value 
+      });
+      this.editingId = null;
+      this.editingTitle = '';
+    }
   }
 
   delete(id: string) {

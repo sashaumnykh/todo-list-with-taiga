@@ -44,6 +44,15 @@ export class TaskService {
     this.save(next);
   }
 
+  update(updated: Task) {
+    if (!this.todos$.value) return;
+    
+    const next = this.todos$.value.map(t => (t.id === updated.id ? {...updated} : t));
+    this.todos$.next(next);
+    this.save(next);
+  }
+
+
   delete(id: string) {
     const next = this.todos$.value!.filter(t => t.id !== id);
     this.todos$.next(next);

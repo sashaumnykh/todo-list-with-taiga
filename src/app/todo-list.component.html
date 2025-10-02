@@ -15,16 +15,56 @@
                 [checked]="task.checked"
                 [formControl]="controls[task.id]"
             />
-            {{ task.title }}
+
+            <!-- режим ПРОСМОТРА -->
+            <ng-container *ngIf="editingId != task.id">
+              {{ task.title }}
+
+              <button 
+                  (click)="startEditing(task)"
+                  title="Редактировать задачу"
+              >
+                ✏️
+              </button>
+
+              <button
+                  type="button"
+                  (click)="delete(task.id)"
+                  title="Удалить задачу"
+              >
+                ❌
+              </button>
+            </ng-container>
+
+            <!-- режим РЕДАКТИРОВАНИЯ -->
+            <ng-container *ngIf="editingId == task.id">
+              <input type="text" [(ngModel)]="editingTitle" />
+
+              <button 
+                  (click)="saveChanges()"
+                  title="Сохранить изменения"
+              >
+                ✔️
+              </button>
+
+              <button 
+                  (click)="cancelEditing()"
+                  title="Отменить изменения"
+              >
+                ✖️
+              </button>
+
+
+              <button
+                  type="button"
+                  (click)="delete(task.id)"
+                  title="Удалить задачу"
+              >
+                ❌
+              </button>
+            </ng-container>
+            
           </div>
-          <button
-              type="button"
-              (click)="delete(task.id)"
-              style="border:none; background:none; cursor:pointer; font-weight:bold;"
-              title="Удалить задачу"
-          >
-            ❌
-          </button>
         </label>
       </div>
 
