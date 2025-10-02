@@ -1,7 +1,7 @@
-<h1>to-do list:</h1>
+<h1>📝 to-do list:</h1>
 
 <div>
-  <div class="search-task" style="margin-bottom: 1rem;">
+  <div class="search-task">
     <input
       tuiTextfield
       [formControl]="searchControl"
@@ -12,11 +12,12 @@
     />
   </div>
 
-  <div class="add-task" style="margin-bottom:1rem; display:flex; gap:0.5rem;">
+  <div class="add-task">
     <input
       tuiTextfield
       [(ngModel)]="newTitle"
       placeholder="Новая задача"
+      [maxlength]="maxTitleLength"
       size="m"
       style="flex:1;"
       (keydown.enter)="add()"
@@ -51,53 +52,61 @@
 
             <!-- режим ПРОСМОТРА -->
             <ng-container *ngIf="editingId != task.id">
-              <span (dblclick)="startEditing(task)" style="cursor:text;">{{ task.title }}</span>
-
-              <button 
+              <div class="task-left-side">
+                <span (dblclick)="startEditing(task)" style="cursor:text;">{{ task.title }}</span>
+              </div>
+              <div class="task-right-side">
+                <button 
                   (click)="startEditing(task)"
                   title="Редактировать задачу"
-              >
-                ✏️
-              </button>
+                  appearance="icon"
+                >✏️</button>
 
-              <button
-                  type="button"
-                  (click)="delete(task.id)"
-                  title="Удалить задачу"
-              >
-                ❌
-              </button>
+                <button
+                    type="button"
+                    (click)="delete(task.id)"
+                    title="Удалить задачу"
+                    appearance="icon"
+                >❌</button>
+              </div>
             </ng-container>
 
             <!-- режим РЕДАКТИРОВАНИЯ -->
             <ng-container *ngIf="editingId == task.id">
-              <input type="text" 
-                    [(ngModel)]="editingTitle"
-                    (keydown.enter)="saveChanges()"
-              />
+              <div class="task-left-side">
+                <input
+                  tuiTextfield
+                  [(ngModel)]="editingTitle"
+                  maxlength="100"
+                  (keydown.enter)="saveChanges()"
+                  style="flex:1;"
+                />
 
-              <button 
-                  (click)="saveChanges()"
-                  title="Сохранить изменения"
-              >
-                ✔️
-              </button>
+                <button 
+                    (click)="saveChanges()"
+                    title="Сохранить изменения"
+                    appearance="icon"
+                >
+                  ✔️
+                </button>
 
-              <button 
-                  (click)="cancelEditing()"
-                  title="Отменить изменения"
-              >
-                ✖️
-              </button>
+                <button 
+                    (click)="cancelEditing()"
+                    title="Отменить изменения"
+                    appearance="icon"
+                >
+                  ✖️
+                </button>
+              </div>
 
-
-              <button
-                  type="button"
-                  (click)="delete(task.id)"
-                  title="Удалить задачу"
-              >
-                ❌
-              </button>
+              <div class="task-right">
+                <button
+                    type="button"
+                    (click)="delete(task.id)"
+                    title="Удалить задачу"
+                    appearance="icon"
+                >❌</button>
+              </div>
             </ng-container>
             
           </div>

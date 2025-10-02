@@ -17,9 +17,13 @@ export class TaskService {
 
   private loadInitial() {
     const fromLs = localStorage.getItem(LS_KEY);
-    if (fromLs) {
-      this.todos$.next(JSON.parse(fromLs));
+    const parsed = fromLs ? JSON.parse(fromLs) : null;
+
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      console.log('Loaded from localStorage:', parsed);
+      this.todos$.next(parsed);
     } else {
+      console.log('Loading from JSON...');
       const tasks = todosJson as Task[];
       this.todos$.next(tasks);
       this.save(tasks);

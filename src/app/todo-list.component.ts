@@ -25,7 +25,6 @@ import { Guid } from './shared/types/guid';
     TuiButton,
     TuiBlock,
     TuiIcon,
-    TuiTitle,
     TuiTooltip,
   ],
   templateUrl: './todo-list.component.html',
@@ -40,6 +39,8 @@ export class TodoListComponent implements OnInit {
   editingTitle = '';
 
   controls: { [id: string]: FormControl } = {};
+
+  maxTitleLength: number = 150;
 
   constructor(private svc: TaskService) {}
 
@@ -85,6 +86,10 @@ export class TodoListComponent implements OnInit {
   startEditing(task: Task) {
     this.editingId = task.id;
     this.editingTitle = task.title;
+    setTimeout(() => {
+      const el = document.getElementById(`edit-${task.id}`);
+      el?.focus();
+    });
   }
 
   cancelEditing() {
@@ -105,6 +110,14 @@ export class TodoListComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.svc.delete(id);
+    if(confirm('Вы уверены, что хотите удалить задачу?')) {
+      this.svc.delete(id);
+    }
   }
+
+  autoResize(event: Event): void {
+  const textarea = event.target as HTMLTextAreaElement;
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+}
 }

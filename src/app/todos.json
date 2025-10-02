@@ -3,5 +3,6 @@
   { "id": "9a1c4d3f-2b5e-4c8d-8f7a-0b2d3e4f5a6b", "title": "Помыть полы", "checked": true },
   { "id": "f2b7c8d1-6e5a-4b3f-9c2d-1e0f7a8b9c3d", "title": "Написать рецензию на книгу", "checked": true },
   { "id": "5d3a1b2c-8f7e-4c9d-9a2b-0e1f2c3d4b5a", "title": "Обновить подиску", "checked": false },
+  { "id": "5d3a1b2c-8f7e-4c9d-9a2b-0e1f2c3d4b5с", "title": "Исправить 'подиску' на 'подписку'!!", "checked": false },
   { "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "title": "Оплатить коммуналку", "checked": false }
 ]
