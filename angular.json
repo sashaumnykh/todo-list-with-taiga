@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/todo-list-with-taiga",
+            "index": "src/index.html",
+            "baseHref": "/todo-list-with-taiga/",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
