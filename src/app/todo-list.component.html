@@ -2,8 +2,12 @@
 <div>
   <div class="container">
     <ng-container *ngIf="tasks$ | async as tasks">
-      <div *ngFor="let task of tasks$ | async" style="margin-bottom: 0.5rem;">
+      <div *ngFor="let task of tasks$ | async" 
+          class="task-card"
+          [class.completed]="task.checked"
+      >
         <label tuiBlock="m">
+          <div class="task-inner">
             <input
                 size="s"
                 tuiCheckbox
@@ -12,6 +16,15 @@
                 [formControl]="controls[task.id]"
             />
             {{ task.title }}
+          </div>
+          <button
+              type="button"
+              (click)="delete(task.id)"
+              style="border:none; background:none; cursor:pointer; font-weight:bold;"
+              title="Удалить задачу"
+          >
+            ❌
+          </button>
         </label>
       </div>
 

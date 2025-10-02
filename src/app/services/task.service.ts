@@ -44,6 +44,12 @@ export class TaskService {
     this.save(next);
   }
 
+  delete(id: string) {
+    const next = this.todos$.value!.filter(t => t.id !== id);
+    this.todos$.next(next);
+    this.save(next);
+  }
+
   private save(list: Task[]) {
     localStorage.setItem(LS_KEY, JSON.stringify(list));
   }

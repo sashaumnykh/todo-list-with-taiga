@@ -60,6 +60,8 @@ export class TodoListComponent implements OnInit {
           }
         });
 
+        console.log(list);
+
         const q = (query || '').toLowerCase();
         return q ? list.filter(t => t.title.toLowerCase().includes(q)) : list;
       })
@@ -67,7 +69,10 @@ export class TodoListComponent implements OnInit {
   }
 
   toggle(id: string) {
-    debugger;
     this.svc.toggle(id);
+  }
+
+  delete(id: string) {
+    this.svc.delete(id);
   }
 }
