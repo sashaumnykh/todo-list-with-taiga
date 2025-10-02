@@ -25,7 +25,7 @@ import { TuiButton } from '@taiga-ui/core';
     TuiBlock,
     TuiIcon,
     TuiTitle,
-    TuiTooltip,
+    TuiTooltip
   ],
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
@@ -38,6 +38,8 @@ export class TodoListComponent implements OnInit {
   editingId: string | null = null;
   editingTitle = '';
 
+  controls: { [id: string]: FormControl } = {};
+
   constructor(private svc: TaskService) {}
 
   ngOnInit() {
@@ -49,6 +51,15 @@ export class TodoListComponent implements OnInit {
       )
     ]).pipe(
       map(([list, query]) => {
+        list.forEach(task => {
+          if (!this.controls[task.id]) {
+            this.controls[task.id] = new FormControl(task.checked);
+            this.controls[task.id].valueChanges.subscribe(val => {
+              this.svc.toggle(task.id);
+            });
+          }
+        });
+
         const q = (query || '').toLowerCase();
         return q ? list.filter(t => t.title.toLowerCase().includes(q)) : list;
       })

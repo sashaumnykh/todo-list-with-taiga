@@ -4,14 +4,14 @@
     <ng-container *ngIf="tasks$ | async as tasks">
       <div *ngFor="let task of tasks$ | async" style="margin-bottom: 0.5rem;">
         <label tuiBlock="m">
-            {{ task.title }}
             <input
                 size="s"
                 tuiCheckbox
                 type="checkbox"
                 [checked]="task.checked"
-                (onChange)="toggle(task.id)"
+                [formControl]="controls[task.id]"
             />
+            {{ task.title }}
         </label>
       </div>
 
