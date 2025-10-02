@@ -1,0 +1,21 @@
+.todo-list { list-style: none; padding: 0; margin-top: 16px; }
+.todo-list li {
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.todo-list li.checked .title { text-decoration: line-through; opacity: .6; }
+.left { width:48px; display:flex; justify-content:center;}
+.center { flex:1; }
+.right { display:flex; gap:8px; }
+.controls { display:flex; flex-direction:column; gap:12px; }
+.add-row { display:flex; gap:8px; align-items:center; }
+.native-add { flex:1; padding:8px; border-radius:6px; border:1px solid #ddd; }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

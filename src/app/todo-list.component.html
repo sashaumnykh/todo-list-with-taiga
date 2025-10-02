@@ -1,0 +1,23 @@
+<h1>to-do list:</h1>
+<div>
+  <div class="container">
+    <ng-container *ngIf="tasks$ | async as tasks">
+      <div *ngFor="let task of tasks$ | async" style="margin-bottom: 0.5rem;">
+        <label tuiBlock="m">
+            {{ task.title }}
+            <input
+                size="s"
+                tuiCheckbox
+                type="checkbox"
+                [checked]="task.checked"
+                (onChange)="toggle(task.id)"
+            />
+        </label>
+      </div>
+
+      <li *ngIf="tasks.length === 0">Ничего не найдено</li>
+    </ng-container>
+
+  </div>
+
+</div>
