@@ -39,7 +39,7 @@
           class="task-card"
           [class.completed]="task.checked"
       >
-        <label tuiBlock="m">
+        <div tuiBlock="m">
           <div class="task-inner">
             <input
                 size="s"
@@ -71,7 +71,10 @@
 
             <!-- режим РЕДАКТИРОВАНИЯ -->
             <ng-container *ngIf="editingId == task.id">
-              <input type="text" [(ngModel)]="editingTitle" />
+              <input type="text" 
+                    [(ngModel)]="editingTitle"
+                    (keydown.enter)="saveChanges()"
+              />
 
               <button 
                   (click)="saveChanges()"
@@ -98,7 +101,7 @@
             </ng-container>
             
           </div>
-        </label>
+        </div>
       </div>
 
       <li *ngIf="tasks.length === 0">Ничего не найдено</li>
