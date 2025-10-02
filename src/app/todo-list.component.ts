@@ -47,11 +47,12 @@ export class TodoListComponent implements OnInit {
     this.tasks$ = combineLatest([
       this.svc.getAll(),                      // поток актуальных задач
       this.searchControl.valueChanges.pipe(
-        startWith(this.searchControl.value ?? ''),
+        startWith(''),
         debounceTime(150)
       )
     ]).pipe(
       map(([list, query]) => {
+        if (!list) return [];
         list.forEach(task => {
           if (!this.controls[task.id]) {
             this.controls[task.id] = new FormControl(task.checked);
@@ -61,7 +62,7 @@ export class TodoListComponent implements OnInit {
           }
         });
 
-        console.log(list);
+        console.log(list.length);
 
         const q = (query || '').toLowerCase();
         return q ? list.filter(t => t.title.toLowerCase().includes(q)) : list;

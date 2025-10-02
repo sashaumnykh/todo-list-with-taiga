@@ -9,7 +9,7 @@ const LS_KEY = 'taiga_todos_v2';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private todos$ = new BehaviorSubject<Task[] | null>(null);
+  private todos$ = new BehaviorSubject<Task[]>([]);
 
   constructor(private http: HttpClient) {
     this.loadInitial();
@@ -17,13 +17,9 @@ export class TaskService {
 
   private loadInitial() {
     const fromLs = localStorage.getItem(LS_KEY);
-    const parsed = fromLs ? JSON.parse(fromLs) : null;
-
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      console.log('Loaded from localStorage:', parsed);
-      this.todos$.next(parsed);
+    if (fromLs) {
+      this.todos$.next(JSON.parse(fromLs));
     } else {
-      console.log('Loading from JSON...');
       const tasks = todosJson as Task[];
       this.todos$.next(tasks);
       this.save(tasks);
@@ -31,9 +27,7 @@ export class TaskService {
   }
 
   getAll(): Observable<Task[]> {
-    return this.todos$.pipe(
-      filter((list): list is Task[] => list !== null)
-    );
+    return this.todos$.asObservable();
   }
 
   toggle(id: string) {

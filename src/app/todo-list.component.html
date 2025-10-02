@@ -1,5 +1,17 @@
 <h1>to-do list:</h1>
+
 <div>
+  <div class="search-task" style="margin-bottom: 1rem;">
+    <input
+      tuiTextfield
+      [formControl]="searchControl"
+      placeholder="Поиск задач"
+      size="m"
+      appearance="outline"
+      style="width:100%;"
+    />
+  </div>
+
   <div class="add-task" style="margin-bottom:1rem; display:flex; gap:0.5rem;">
     <input
       tuiTextfield
